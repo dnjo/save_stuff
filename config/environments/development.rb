@@ -65,4 +65,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.cors_origin = 'localhost:3000'
+  config.hosts.clear
 end
