@@ -39,5 +39,7 @@ module SaveStuff
 
     config.logger = Logger.new($stdout)
     config.log_level = :info
+
+    config.jwt_signing_key = JSON.parse(Rails.application.credentials.security[:jwt_signing_key])
   end
 end
