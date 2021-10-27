@@ -85,6 +85,14 @@ class RedditIntegration < ApplicationRecord
     access_token
   end
 
+  def app_id
+    Rails.application.credentials.reddit[:app_id]
+  end
+
+  def app_secret
+    Rails.application.credentials.reddit[:app_secret]
+  end
+
   def self.app_id
     Rails.application.credentials.reddit[:app_id]
   end
