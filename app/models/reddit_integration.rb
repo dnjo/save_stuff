@@ -52,13 +52,19 @@ class RedditIntegration < ApplicationRecord
         title: data[:title],
         url: "https://www.reddit.com#{data[:permalink]}",
         created: Time.at(data[:created_utc]).to_datetime,
-        thumbnail: data[:thumbnail]
+        thumbnail: filter_thumbnail(data[:thumbnail])
       }
       Item.new(item_data)
     end
   end
 
   private
+
+  def filter_thumbnail(thumbnail)
+    return nil if thumbnail.nil? || !thumbnail.start_with?('https://')
+
+    thumbnail
+  end
 
   def valid_access_token
     soon = DateTime.now + 1.minute
