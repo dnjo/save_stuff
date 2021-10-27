@@ -51,7 +51,8 @@ class RedditIntegration < ApplicationRecord
         id: data[:id],
         title: data[:title],
         url: "https://www.reddit.com#{data[:permalink]}",
-        created: Time.at(data[:created_utc]).to_datetime
+        created: Time.at(data[:created_utc]).to_datetime,
+        thumbnail: data[:thumbnail]
       }
       Item.new(item_data)
     end
